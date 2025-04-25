@@ -32,50 +32,54 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     1. Configurar la zona horaria en Argentina.
 
     Lo primero es setear la configuración de la zona horaria a la local Argentina:
-    -Tambien se agrega una validación para chequear la configuración actual de la zona horaria, si es la que precisamos dará un mensaje 'echo' "Zona horaria ya configurada" sino ejecuta el comando: *`timedatectl set-timezone America/Argentina/Cordoba` 
+    -Tambien se agrega una validación para chequear la configuración actual de la zona horaria, si es la que precisamos dará un mensaje 'echo' "Zona horaria ya configurada" sino ejecuta el comando: 
+
+  * timedatectl set-timezone America/Argentina/Cordoba 
     
     2. Configurar el nombre del host como “bootcampwebexperto”.
 
-    -'echo bootcampwebexperto > /etc/hostname'
+  * echo bootcampwebexperto > /etc/hostname
 
     3. Crear un usuario sudo que se llame webexperto.
-    -'adduser webexperto && sudo usermod -aG sudo webexperto'
+  * adduser webexperto && sudo usermod -aG sudo webexperto
 
     4. Crear un usuario para conectarse vía ssh.
-    -'adduser --disabled-password --gecos "" userssh'
+  * adduser --disabled-password --gecos "" userssh
 
     5. Que actualice las dependencias.
-    -'apt -qq update && sudo apt -qq upgrade -y'. Con "--qq" lo ejecutamos de manera silence.
+  * apt -qq update && sudo apt -qq upgrade -y. 
+  Con "--qq" lo ejecutamos de manera silence.
 
     6. Validar si está instalado docker y sino instalarlo.
-    -La validación de Docker se ejecuta mediante una sentencia if-else dónde detectamos si el comando 'docker' existe, si es asi arroja un 'echo' diciendo "Docker está instalado." sino instala varios paquetes desde un 'curl'.
+    -La validación de Docker se ejecuta mediante una sentencia if-else dónde detectamos si el comando `docker` existe, si es asi arroja un `echo` diciendo "Docker está instalado." sino instala varios paquetes desde un `curl`.
 
     7. Validar si está instalado docker-compose y sino instalarlo.
-    -Con Docker Compose hacemos el mismo paso de validación pero con su respectivo comando y para descargarlo también aplicamos 'curl' a su repositorio de GitHub.
+    -Con Docker Compose hacemos el mismo paso de validación pero con su respectivo comando y para descargarlo también aplicamos `curl` a su repositorio de GitHub.
 
     8. Crear grupo docker e iniciar el servicio.
-    -Añadimos el grupo de docker 'groupadd docker'.
+  * Añadimos el grupo de docker 'groupadd docker
 
     9. Instalar mc.
-    -Instalamos Midnight Comander y aceptamos todo 'apt install mc -y'.
+  * Instalamos Midnight Comander y aceptamos todo 'apt install mc -y
 
     10. Instalar vim.
-    -Mismo proceso que mc.
+    -Mismo proceso que mc
 
     11. Instalar net-tools.
-    -Para Net-Tools el mismo proceso 'apt install net-tools -y'.
+    -Para Net-Tools el mismo proceso:
+  * apt install net-tools -y
 
     12. Crear un usuario nginx, le asignamos de password el mismo name de user y dar permisos de docker.
     - Añadimos un usuario Nginx suprimiendo la contraseña y en la misma ejecución añadiendolo al grupo de Docker para que pueda ejecutar sus comandos.
 
     ##EXTRA
-    #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi docker-compose
+    #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi `docker-compose`
 
-    wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip
+  * wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip
 
     #Descargamos el cliente DUC para NO-IP para poder ejecutar el contenedor con la DNS
 
-    wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest
+  * wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest
 
 
 
