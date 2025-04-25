@@ -38,53 +38,53 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
 
   `timedatectl set-timezone America/Argentina/Cordoba` 
     
-    2. Configurar el nombre del host como **“bootcampwebexperto”**.
+ 2. Configurar el nombre del host como **“bootcampwebexperto”**.
 
   `echo bootcampwebexperto > /etc/hostname`
 
-    3. Crear un usuario sudo que se llame webexperto.
+ 3. Crear un usuario sudo que se llame webexperto.
 
   `adduser webexperto && sudo usermod -aG sudo webexperto`
 
-    4. Crear un usuario para conectarse vía ssh.
+ 4. Crear un usuario para conectarse vía ssh.
 
   `adduser --disabled-password --gecos "" userssh`
 
-    5. Que actualice las dependencias.
+ 5. Que actualice las dependencias.
 
   `apt -qq update && sudo apt -qq upgrade -y`
   
   Con `--qq` lo ejecutamos de manera silence.
 
-    6. Validar si está instalado docker y sino instalarlo.
+ 6. Validar si está instalado docker y sino instalarlo.
     
     -La validación de Docker se ejecuta mediante una sentencia if-else dónde detectamos si el comando `docker` existe, si es asi arroja un `echo` diciendo "Docker está instalado." sino instala varios paquetes desde un `curl`.
 
-    7. Validar si está instalado docker-compose y sino instalarlo.
+ 7. Validar si está instalado docker-compose y sino instalarlo.
     
     -Con Docker Compose hacemos el mismo paso de validación pero con su respectivo comando y para descargarlo también aplicamos `curl` a su repositorio de GitHub.
 
-    8. Crear grupo docker e iniciar el servicio.
+ 8. Crear grupo docker e iniciar el servicio.
   
   `Añadimos el grupo de docker 'groupadd docker`
 
-    9. Instalar mc.
+ 9. Instalar mc.
 
   Instalamos Midnight Comander y aceptamos todo `apt install mc -y`
 
-    10. Instalar vim.
+ 10. Instalar vim.
     
     -Mismo proceso que mc
 
-    11. Instalar net-tools.
+ 11. Instalar net-tools.
     
     -Para Net-Tools el mismo proceso:
    
   `apt install net-tools -y`
 
-    12. Crear un usuario nginx, le asignamos de password el mismo name de user y dar permisos de docker.
+ 12. Crear un usuario nginx, le asignamos de password el mismo name de user y dar permisos de docker.
     
-    - Añadimos un usuario Nginx suprimiendo la contraseña y en la misma ejecución añadiendolo al grupo de Docker para que pueda ejecutar sus comandos.
+  - Añadimos un usuario Nginx suprimiendo la contraseña y en la misma ejecución añadiendolo al grupo de Docker para que pueda ejecutar sus comandos.
 
     ##EXTRA
     #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi `docker-compose`
