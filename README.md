@@ -74,11 +74,11 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
 
  10. Instalar vim.
     
-    -Mismo proceso que mc
+  -Mismo proceso que mc
 
  11. Instalar net-tools.
     
-    -Para Net-Tools el mismo proceso:
+  -Para Net-Tools el mismo proceso:
    
   `apt install net-tools -y`
 
