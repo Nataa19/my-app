@@ -66,7 +66,9 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
 
  8. Crear grupo docker e iniciar el servicio.
   
-        `Añadimos el grupo de docker 'groupadd docker`
+    -Añadimos el grupo de docker
+        
+        `groupadd docker`
 
  9. Instalar mc.
 
