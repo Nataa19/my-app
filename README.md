@@ -36,7 +36,7 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     
     -Tambien se agrega una validación para chequear la configuración actual de la zona horaria, si es la que precisamos dará un mensaje `echo` Zona horaria ya configurada, sino ejecuta el comando: 
 
-  `timedatectl set-timezone America/Argentina/Cordoba` 
+    `timedatectl set-timezone America/Argentina/Cordoba` 
     
  2. Configurar el nombre del host como **“bootcampwebexperto”**.
 
@@ -91,7 +91,7 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
 
   `wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip`
 
-    #Descargamos el cliente DUC para NO-IP para poder ejecutar el contenedor con la DNS
+ #Descargamos el cliente DUC para NO-IP para poder ejecutar el contenedor con la DNS
 
   `wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest`
 
