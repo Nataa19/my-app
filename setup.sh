@@ -90,6 +90,8 @@ adduser --quiet --disabled-password --gecos "" nginx && echo nginx:nginx | chpas
 #EXTRA
 #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi docker-compose
 
+mkdir -p /home/nginx
+
 wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip
 
 cd /home/nginx && unzip main.zip
