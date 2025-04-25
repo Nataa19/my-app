@@ -1,0 +1,69 @@
+#revisar bien las rutas declaradas para que no hayan errores
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /home/userssh/my-app/app/certs:/etc/nginx/certs:ro
+      - /home/userssh/my-app/app/vhostd:/etc/nginx/vhost.d
+      - /home/userssh/my-app/app/html:/usr/share/nginx/html
+      - /home/userssh/my-app/app/acme:/etc/acme.sh
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+      - CREATE_DEFAULT_CERTIFICATE=true
+      - DEBUG=true
+    volumes:
+      - /home/userssh/my-app/app/certs:/etc/nginx/certs:rw
+      - /home/userssh/my-app/app/vhostd:/etc/nginx/vhost.d
+      - /home/userssh/my-app/app/html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/userssh/my-app/app/acme:/etc/acme.sh
+    volumes_from:
+      - nginx-proxy:rw
+
+  www:
+    image: nginx:alpine3.21
+    restart: always
+    expose:
+      - "80"
+    volumes:
+      - ./sitio1:/usr/share/nginx/html:ro
+    environment:
+      - VIRTUAL_HOST=nataec.ddns.net
+      - LETSENCRYPT_HOST=nataec.ddns.net
+      - LETSENCRYPT_EMAIL=canteronatanael8@gmail.com
+    depends_on:
+      - nginx-proxy
+      - letsencrypt
+
+  www2:
+    image: nginx:alpine3.21
+    restart: always
+    expose:
+      - "80"
+    volumes:
+      - ./sitio2:/usr/share/nginx/html:ro
+    environment:
+      - VIRTUAL_HOST=nataec.ddns.net
+      - LETSENCRYPT_HOST=nataec.ddns.net
+      - LETSENCRYPT_EMAIL=canteronatanael8@gmail.com
+    depends_on:
+      - nginx-proxy
+      - letsencrypt
+
+volumes: 
+  certs:
+  html:
+  vhostd:
+  acme:
