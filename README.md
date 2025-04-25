@@ -32,7 +32,7 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     1. Configurar la zona horaria en Argentina.
 
     Lo primero es setear la configuración de la zona horaria a la local Argentina:
-    -Tambien se agrega una validación para chequear la configuración actual de la zona horaria, si es la que precisamos dará un mensaje 'echo' "Zona horaria ya configurada" sino ejecuta el comando: `timedatectl set-timezone America/Argentina/Cordoba` 
+    -Tambien se agrega una validación para chequear la configuración actual de la zona horaria, si es la que precisamos dará un mensaje 'echo' "Zona horaria ya configurada" sino ejecuta el comando: *`timedatectl set-timezone America/Argentina/Cordoba` 
     
     2. Configurar el nombre del host como “bootcampwebexperto”.
 
