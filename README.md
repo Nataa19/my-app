@@ -1,6 +1,6 @@
 ¡Bienvenido!
 
-Tener en cuenta que si precisas ver el tutorial con complemento gráfico (screenshots) visita el https://github.com/Nataa19/my-app/blob/main/README.pdf.
+Tener en cuenta que si precisas ver el tutorial con complemento gráfico (screenshots) visita el ['README.pdf'](https://github.com/Nataa19/my-app/blob/main/README.pdf).
 También tenemos que tener en cuenta que el script se ejecuta SOLO bajo condición de usuario root. Esto es aclarado antes de ejecutarlo en terminal si no eres usuario root.
 
 Para este proyecto se utiliza:
