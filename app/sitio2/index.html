@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        
+        h1 {
+            color: #0066cc;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .cookie-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .cookie {
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23d4a76a"/><circle cx="30" cy="40" r="5" fill="%23654321"/><circle cx="70" cy="40" r="5" fill="%23654321"/><path d="M30 65 Q50 80 70 65" stroke="%23654321" stroke-width="2" fill="none"/><circle cx="60" cy="30" r="3" fill="%23654321"/><circle cx="40" cy="25" r="3" fill="%23654321"/><circle cx="20" cy="60" r="3" fill="%23654321"/><circle cx="80" cy="55" r="3" fill="%23654321"/></svg>');
+            background-size: contain;
+            transition: transform 0.2s;
+        }
+        
+        .cookie:hover {
+            transform: scale(1.1);
+        }
+        
+        .cookie:active {
+            transform: scale(0.95);
+        }
+        
+        .counter {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>TP 2</h1>
+    
+    <div class="cookie-container">
+        <div class="cookie" id="cookie"></div>
+        <div class="counter" id="counter">0 clicks</div>
+    </div>
+    
+    <div class="footer">
+        Haz clic en la galleta para incrementar el contador
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const cookie = document.getElementById('cookie');
+        const counter = document.getElementById('counter');
+        
+        cookie.addEventListener('click', function() {
+            clickCount++;
+            counter.textContent = clickCount === 1 ? '1 click' : `${clickCount} clicks`;
+            
+            // Efecto de animación
+            cookie.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                cookie.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    cookie.style.transform = 'scale(1)';
+                }, 100);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
+
