@@ -54,6 +54,45 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     11. Instalar net-tools.
     -Para Net-Tools el mismo proceso 'apt install net-tools -y'.
 
-    12. Crear un usuario nginx y dar permisos de docker.
+    12. Crear un usuario nginx, le asignamos de password el mismo name de user y dar permisos de docker.
     - Añadimos un usuario Nginx suprimiendo la contraseña y en la misma ejecución añadiendolo al grupo de Docker para que pueda ejecutar sus comandos.
+
+    ##EXTRA
+    #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi docker-compose
+
+    wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip
+
+    #Descargamos el cliente DUC para NO-IP para poder ejecutar el contenedor con la DNS
+
+    wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest
+
+
+
+Al reiniciar el Droplet ahora tenemos que loguearnos via ssh con el usuario permitido para la misma conexión, el “userssh”.
+
+Cuando ingresemos a la home correspondiente del usuario, veremos 5 archivos.
+
+    * main.zip
+    * my-app-main
+    * noip-duc_3.3.0.tar.gz
+    * noip-duc_3.3.0
+
+Esto se debe a que descargamos de mi propio GitHub el repo con todo el contenido necesario para runnear la web ‘main.zip’. 
+Además de eso nos va a descargar el comprimido para instalar el DUC (Dynamic Update Client) ‘noip-duc_3.3.0.tar.gz’ que nos solicita No-IP para generar la asociación del DNS con el Droplet y su IP.
+
+###Docker Compose
+
+Ahora vamos a entrar en el proceso de creación y ejecución del docker-compose definido para este proyecto.
+
+Primeramente tenemos que cambiar de usuario durante la sesión del actual “userssh”, por “nginx”. Este último es quien tiene los permisos del grupo docker, es decir es quien puede ejecutar los comandos del binario de ‘dockerd’.
+
+Para la creación del compose nos basamos en un repositorio de GitHub de PeladoNerd. En el mismo tenemos como servicios un sitio web estático, un generador de certificados ssl y un servidor proxy.
+
+Este archivo compose.yml configura un proxy inverso Nginx (nginx-proxy) que gestiona el tráfico HTTP y HTTPS. Utiliza un compañero (letsencrypt) para obtener y renovar automáticamente certificados SSL/TLS para tu dominio (nataec.ddns.net). El servicio www contiene la aplicación web real (en este caso, un servidor Nginx sirviendo contenido desde ./sitio1) y está configurado para ser accesible a través del proxy utilizando las variables de entorno VIRTUAL_HOST y LETSENCRYPT_HOST. Las dependencias aseguran que los servicios se inicien en el orden correcto. Los volúmenes se utilizan para compartir la configuración de Nginx, los certificados SSL/TLS, los archivos del sitio web y el socket de Docker entre los contenedores y el host.
+
+
+#####En el archivo 'README.pdf' tenemos una explicación detallada de todo el compose###
+
+Por último tendremos que hacer un ‘curl -I nataec.ddns.net’ para recibir el status de redireccionamiento de http>https. Sino podemos visitar el sitio
+Otra verificacion que podemos realizar es resolver el DNS con 'nslookup nataec.ddns.net'.
 
