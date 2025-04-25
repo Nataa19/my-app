@@ -85,7 +85,7 @@ apt install net-tools -y
 
 #Añadimos el user 'nginx' y lo agregamos al grupo docker
 
-adduser --quiet --disabled-password --gecos "" nginx && echo userssh:userssh | chpasswd && sudo usermod -aG docker nginx && newgrp docker
+adduser --quiet --disabled-password --gecos "" nginx && echo nginx:nginx | chpasswd && sudo usermod -aG docker nginx && newgrp docker
 
 #EXTRA
 #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi docker-compose
