@@ -5,14 +5,14 @@ También tenemos que tener en cuenta que el script se ejecuta SOLO bajo condici�
 
 Para este proyecto se utiliza:
     
-    * Digital Ocean como Host IP
-    * SO Ubuntu 24.04 LTS
-    * Scripting Bash
-    * Docker y Docker Compose
-    * No-IP como DNS free
-    * Nginx como Server Proxy
-    * Let´s Encrypt para generar certificados SSL free
-    * Un proyecto de web HTML sencillo
+   * Digital Ocean como Host IP
+   * SO Ubuntu 24.04 LTS
+   * Scripting Bash
+   * Docker y Docker Compose
+   * No-IP como DNS free
+   * Nginx como Server Proxy
+   * Let´s Encrypt para generar certificados SSL free
+   * Un proyecto de web HTML sencillo
 
 1. Levantar una VM con ubuntu server.    
 
@@ -40,25 +40,25 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     
  2. Configurar el nombre del host como **“bootcampwebexperto”**.
 
-  `echo bootcampwebexperto > /etc/hostname`
+        `echo bootcampwebexperto > /etc/hostname`
 
  3. Crear un usuario sudo que se llame webexperto.
 
-  `adduser webexperto && sudo usermod -aG sudo webexperto`
+        `adduser webexperto && sudo usermod -aG sudo webexperto`
 
  4. Crear un usuario para conectarse vía ssh.
 
-  `adduser --disabled-password --gecos "" userssh`
+        `adduser --disabled-password --gecos "" userssh`
 
  5. Que actualice las dependencias.
 
-  `apt -qq update && sudo apt -qq upgrade -y`
+        `apt -qq update && sudo apt -qq upgrade -y`
   
   Con `--qq` lo ejecutamos de manera silence.
 
  6. Validar si está instalado docker y sino instalarlo.
     
-    -La validación de Docker se ejecuta mediante una sentencia if-else dónde detectamos si el comando `docker` existe, si es asi arroja un `echo` diciendo "Docker está instalado." sino instala varios paquetes desde un `curl`.
+   -La validación de Docker se ejecuta mediante una sentencia if-else dónde detectamos si el comando `docker` existe, si es asi arroja un `echo` diciendo "Docker está instalado." sino instala varios paquetes desde un `curl`.
 
  7. Validar si está instalado docker-compose y sino instalarlo.
     
@@ -66,7 +66,7 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
 
  8. Crear grupo docker e iniciar el servicio.
   
-  `Añadimos el grupo de docker 'groupadd docker`
+        `Añadimos el grupo de docker 'groupadd docker`
 
  9. Instalar mc.
 
@@ -80,7 +80,7 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     
   -Para Net-Tools el mismo proceso:
    
-  `apt install net-tools -y`
+        `apt install net-tools -y`
 
  12. Crear un usuario nginx, le asignamos de password el mismo name de user y dar permisos de docker.
     
@@ -89,11 +89,11 @@ f. Por último, le asignamos un nombre al Droplet, lo asociamos a un proyecto y 
     ##EXTRA
     #Descargamos el repo en .zip desde mi GitHub para poder ejecutar mi `docker-compose`
 
-  `wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip`
+        `wget -P /home/nginx https://github.com/Nataa19/my-app/archive/refs/heads/main.zip`
 
  #Descargamos el cliente DUC para NO-IP para poder ejecutar el contenedor con la DNS
 
-  `wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest`
+        `wget -P /home/nginx --content-disposition https://www.noip.com/download/linux/latest`
 
 
 
@@ -101,10 +101,10 @@ Al reiniciar el Droplet ahora tenemos que loguearnos via ssh con el usuario perm
 
 Cuando ingresemos a la home correspondiente del usuario, veremos 5 archivos.
 
-    * main.zip
-    * my-app-main
-    * noip-duc_3.3.0.tar.gz
-    * noip-duc_3.3.0
+   * main.zip
+   * my-app-main
+   * noip-duc_3.3.0.tar.gz
+   * noip-duc_3.3.0
 
 Esto se debe a que descargamos de mi propio GitHub el repo con todo el contenido necesario para runnear la web ‘main.zip’. 
 Además de eso nos va a descargar el comprimido para instalar el DUC (Dynamic Update Client) ‘noip-duc_3.3.0.tar.gz’ que nos solicita No-IP para generar la asociación del DNS con el Droplet y su IP.
