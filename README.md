@@ -3,6 +3,17 @@
 Tener en cuenta que si precisas ver el tutorial con complemento gráfico (screenshots) visita el 'README.pdf'.
 También tenemos que tener en cuenta que el script se ejecuta SOLO bajo condición de usuario root. Esto es aclarado antes de ejecutarlo en terminal si no eres usuario root.
 
+Para este proyecto se utiliza:
+    
+    * Digital Ocean como Host IP
+    * SO Ubuntu 24.04 LTS
+    * Scripting Bash
+    * Docker y Docker Compose
+    * No-IP como DNS free
+    * Nginx como Server Proxy
+    * Let´s Encrypt para generar certificados SSL free
+    * Un proyecto de web HTML sencillo
+
 1. Levantar una VM con ubuntu server.    
 
 a. Para crear una VM con ubuntu server lo primero que debemos de hacer es ir a la sección "Droplets" del menú lateral izquierdo. En esta misma sección seleccionaremos el botón a la derecha que nos dice "Create Droplet”.
