@@ -12,7 +12,7 @@ Para este proyecto se utiliza:
    * No-IP como DNS free
    * Nginx como Server Proxy
    * Let´s Encrypt para generar certificados SSL free
-   * Un proyecto de web HTML sencillo
+   * [Nextcloud](https://github.com/nextcloud/docker)
 
 Encontraremos distintos archivos y directorios:
 
@@ -34,7 +34,7 @@ El proceso consta de:
    * Ejecutar el `init.sh`
    * Cambiar al usuario `nginx` y ejecutar el comando alojado en el archivo txt `initduc.txt`
    * Si todo está OK, ingresa a `my-app-main` y ejecutar el `compose.yaml`
-   * Verificar [web activa](https://nataec.ddns.net) con DNS correspondiente, certificados SSL y contenido HTML. 
+   * Verificar [web activa](https://nataec.ddns.net) con DNS correspondiente, certificados SSL y contenido Nextcloud. 
 
 1. Levantar una VM con ubuntu server.    
 
