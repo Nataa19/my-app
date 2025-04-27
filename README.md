@@ -14,6 +14,28 @@ Para este proyecto se utiliza:
    * Let´s Encrypt para generar certificados SSL free
    * Un proyecto de web HTML sencillo
 
+Encontraremos distintos archivos y directorios:
+
+   * app: carpeta que contiene el compose.yaml y los directorios para el load balancer y sus respectivos index.html
+   * README.pdf: una versión mas gráfica de este README.md
+   * setup.sh: archivo bash script principal para la automatización de todas las sentencias
+   * init.sh: archivo que nos permitira automatizar obtener el compose y archivos html para iniciar el up.
+
+El proceso consta de:
+
+   * Crear un [No-IP Hostname](https://noip.com)
+   * Copiar y pegar IP del Droplet en el Hostname creado.
+   * Crear una DDNS Key y guardar estos datos.
+   * Conectarnos al Droplet de Digital Ocean
+   * Ejecutar el script `setup.sh` (demora unos minutos)
+   * Reboot 
+   * Ingresar vía ssh al Droplet por medio del usuario `userssh` 
+   * Cambiar de usuario a `root`
+   * Ejecutar el `init.sh`
+   * Cambiar al usuario `nginx` y ejecutar el comando alojado en el archivo txt `initduc.txt`
+   * Si todo está OK, ingresa a `my-app-main` y ejecutar el `compose.yaml`
+   * Verificar [web activa](https://nataec.ddns.net) con DNS correspondiente, certificados SSL y contenido HTML. 
+
 1. Levantar una VM con ubuntu server.    
 
 a. Para crear una VM con ubuntu server lo primero que debemos de hacer es ir a la sección **"Droplets"** del menú lateral izquierdo. En esta misma sección seleccionaremos el botón a la derecha que nos dice **"Create Droplet”**.
